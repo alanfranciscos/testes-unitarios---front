@@ -20,8 +20,8 @@ describe("a pagina de sorteio", () => {
         <Sorteio />
       </RecoilRoot>
     );
-  });
 
-  const opcoes = screen.queryAllByRole("option");
-  expect(opcoes).toHaveLength(participantes.length);
+    const opcoes = screen.queryAllByRole("option");
+    expect(opcoes).toHaveLength(participantes.length);
+  });
 });
