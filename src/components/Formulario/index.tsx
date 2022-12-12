@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAdicionarParticipante } from "../../state/hook/useAdicionarPaticipante";
 import { useMensagemDeErro } from "../../state/hook/useMensagemDeErro";
-import { Button, Container, Input, Title } from "./styles";
+import { Alert, Container, InputContainer } from "./styles";
 
 const Formulario = () => {
   const [nome, setNome] = useState("");
@@ -22,17 +22,22 @@ const Formulario = () => {
 
   return (
     <Container>
-      <Title>Vamos começar!</Title>
+      <div style={{ margin: "0 auto", width: "max-content" }}>
+        <h1>Vamos começar!</h1>
+      </div>
+
       <form onSubmit={adicionarParticipante}>
-        <Input
-          ref={inputRef}
-          value={nome}
-          onChange={(evento) => setNome(evento.target.value)}
-          type="text"
-          placeholder="Insira os nomes dos participantes"
-        />
-        <Button disabled={!nome}>Adicionar</Button>
-        {mensagemDeErro ? <p role="alert">{mensagemDeErro}</p> : null}
+        <InputContainer>
+          <input
+            ref={inputRef}
+            value={nome}
+            onChange={(evento) => setNome(evento.target.value)}
+            type="text"
+            placeholder="Insira os nomes dos participantes"
+          />
+          <button disabled={!nome}>Adicionar</button>
+          {mensagemDeErro ? <Alert role="alert">{mensagemDeErro}</Alert> : null}
+        </InputContainer>
       </form>
     </Container>
   );
