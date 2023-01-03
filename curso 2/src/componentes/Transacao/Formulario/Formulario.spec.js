@@ -25,4 +25,14 @@ describe('render the Formulario component', () => {
 
     expect(campoTexto).toHaveValue(50);
   });
+
+  it('Should call a submit event when click in realize transaction', () => {
+    const realizarTransacao = jest.fn();
+
+    render(<Formulario realizarTransacao={realizarTransacao} />);
+    const botao = screen.getByRole('button');
+
+    userEvent.click(botao);
+    expect(realizarTransacao).toHaveBeenCalledTimes(1);
+  });
 });
